@@ -3,6 +3,23 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+document.addEventListener("DOMContentLoaded",onContentLoad)
+function onContentLoad(){
+  mimicServerCall()
+  .then((resp)=>console.log("Resolved promise: "+resp))
+  .catch((resp)=>{
+    console.log("Reject promise: "+ resp);
+    getModalElem().removeAttribute("class");
+    setTimeout(hideError, 5000);
+  });
+}
+
+function hideError(){
+  getModalElem().setAttribute("class", "hidden");
+}
+function getModalElem(){
+  return document.getElementById("modal");
+}
 
 
 

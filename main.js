@@ -6,35 +6,34 @@ const FULL_HEART = '♥'
 document.addEventListener("DOMContentLoaded",onContentLoad)
 function onContentLoad(){
   mimicServerCall()
-  .then((resp)=>{
-    console.log("Resolved promise: "+resp);
-    const likeGlyphs = getLikeGlyph();
-    for (const likeGlyph of  likeGlyphs){ activateFullHeart(likeGlyph)}
-  })
+  .then((resp)=>activateFullHearts())
   .catch(function (resp){
-    console.log("Reject promise: "+ resp);
-    getModalElem().removeAttribute("class");
+    getModalElem().classList.remove("hidden");
     setTimeout(hideError, 5000);
   });
 }
 
 function hideError(){
-  getModalElem().setAttribute("class", "hidden");
+  getModalElem().classList.add("hidden");
 }
 function getModalElem(){
   return document.getElementById("modal");
 }
-function getLikeGlyph(){
+function getLikeGlyphSpanElems(){
   return document.querySelectorAll(".like-glyph");
 }
-function activateFullHeart(likeGlyph){
-  likeGlyph.textContent= FULL_HEART;
-  likeGlyph.setAttribute("class", "activated-heart");
-  // likeGlyph.addEventListener("click", )
+function activateFullHearts(){
+  for (const likeGlyph of getLikeGlyphSpanElems()){
+    likeGlyph.textContent= FULL_HEART;
+    likeGlyph.classList.add("activated-heart");
+    likeGlyph.addEventListener("click", deactivateFullHeart);
+  }
 }
-// function deactivateFullHeart(event){
-//
-// }
+function deactivateFullHeart(event){
+  const likeGlyphSpanElem = event.target;
+  likeGlyphSpanElem.textContent= EMPTY_HEART;
+  likeGlyphSpanElem.classList.remove("activated-heart");
+}
 
 
 

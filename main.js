@@ -6,8 +6,12 @@ const FULL_HEART = '♥'
 document.addEventListener("DOMContentLoaded",onContentLoad)
 function onContentLoad(){
   mimicServerCall()
-  .then((resp)=>console.log("Resolved promise: "+resp))
-  .catch((resp)=>{
+  .then((resp)=>{
+    console.log("Resolved promise: "+resp);
+    const likeGlyphs = getLikeGlyph();
+    for (const likeGlyph of  likeGlyphs){ activateFullHeart(likeGlyph)}
+  })
+  .catch(function (resp){
     console.log("Reject promise: "+ resp);
     getModalElem().removeAttribute("class");
     setTimeout(hideError, 5000);
@@ -20,6 +24,17 @@ function hideError(){
 function getModalElem(){
   return document.getElementById("modal");
 }
+function getLikeGlyph(){
+  return document.querySelectorAll(".like-glyph");
+}
+function activateFullHeart(likeGlyph){
+  likeGlyph.textContent= FULL_HEART;
+  likeGlyph.setAttribute("class", "activated-heart");
+  // likeGlyph.addEventListener("click", )
+}
+// function deactivateFullHeart(event){
+//
+// }
 
 
 

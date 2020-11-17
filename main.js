@@ -6,16 +6,9 @@ const FULL_HEART = '♥'
 document.addEventListener("DOMContentLoaded",onContentLoad)
 function onContentLoad(){
   mimicServerCall()
-<<<<<<< HEAD
   .then((resp)=>activateFullHearts())
   .catch(function (resp){
     getModalElem().classList.remove("hidden");
-=======
-  .then((resp)=>console.log("Resolved promise: "+resp))
-  .catch((resp)=>{
-    console.log("Reject promise: "+ resp);
-    getModalElem().removeAttribute("class");
->>>>>>> 8798a8f4fc65853491bfb5d650d6f67b42cbf963
     setTimeout(hideError, 5000);
   });
 }

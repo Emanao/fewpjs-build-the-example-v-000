@@ -14,16 +14,11 @@ function onContentLoad(){
 }
 
 function hideError(){
-<<<<<<< HEAD
   getModalElem().classList.add("hidden");
-=======
-  getModalElem().setAttribute("class", "hidden");
->>>>>>> 8798a8f4fc65853491bfb5d650d6f67b42cbf963
 }
 function getModalElem(){
   return document.getElementById("modal");
 }
-<<<<<<< HEAD
 function getLikeGlyphSpanElems(){
   return document.querySelectorAll(".like-glyph");
 }
@@ -39,8 +34,6 @@ function deactivateFullHeart(event){
   likeGlyphSpanElem.textContent= EMPTY_HEART;
   likeGlyphSpanElem.classList.remove("activated-heart");
 }
-=======
->>>>>>> 8798a8f4fc65853491bfb5d650d6f67b42cbf963
 
 
 
